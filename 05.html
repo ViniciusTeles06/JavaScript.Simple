@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Salários Mínimos</title>
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .container { 
+            background: rgba(255,255,255,0.1); 
+            padding: 40px; 
+            border-radius: 20px; 
+            max-width: 500px;
+            margin: 50px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .salario-minimo { 
+            background: #4CAF50; 
+            color: white; 
+            padding: 15px; 
+            border-radius: 10px; 
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        .resultado { 
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d); 
+            padding: 25px; 
+            border-radius: 15px; 
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        input { 
+            padding: 12px; 
+            font-size: 18px; 
+            border: none; 
+            border-radius: 10px; 
+            width: 200px;
+            margin: 10px;
+        }
+        button { 
+            background: #ff6b6b; 
+            color: white; 
+            border: none; 
+            padding: 15px 30px; 
+            border-radius: 25px; 
+            font-size: 18px; 
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover { background: #ff5252; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💼 Calculadora de Salários Mínimos</h1>
+        
+        <div class="salario-minimo">
+            💰 Salário Mínimo 2024: <strong>R$ 1.525,00</strong>
+        </div>
+        
+        <br>
+        <input type="number" id="salario" placeholder="Digite seu salário" step="0.01">
+        <br><br>
+        <button onclick="calcular()">CALCULAR 📊</button>
+        
+        <div id="resultado" class="resultado" style="display:none;"></div>
+    </div>
+
+    <script>
+        const SALARIO_MINIMO = 1525.00; // Valor fixo do exercício
+
+        function calcular() {
+            // 1. Ler salário do usuário
+            let salarioUsuario = parseFloat(document.getElementById('salario').value);
+
+            // 2. Validar se digitou algo
+            if (isNaN(salarioUsuario) || salarioUsuario <= 0) {
+                alert("❌ Digite um salário válido!");
+                return;
+            }
+
+            // 3. Calcular quantos salários mínimos
+            let quantidadeSalariosMinimos = salarioUsuario / SALARIO_MINIMO;
+
+            // 4. Mostrar resultado
+            let resultado = document.getElementById('resultado');
+            resultado.innerHTML = `
+                💰 Seu salário: R$ ${salarioUsuario.toFixed(2)}<br>
+                📊 Equivale a: <strong>${quantidadeSalariosMinimos.toFixed(2)} salários mínimos</strong><br><br>
+                <small>Salário mínimo: R$ ${SALARIO_MINIMO.toLocaleString('pt-BR')}</small>
+            `;
+            resultado.style.display = 'block';
+
+            // 5. Alert também
+            alert(`✅ Seu salário de R$ ${salarioUsuario.toFixed(2)}` +
+                  `\nequivale a ${quantidadeSalariosMinimos.toFixed(2)} salários mínimos!`);
+        }
+    </script>
+</body>
+</html>

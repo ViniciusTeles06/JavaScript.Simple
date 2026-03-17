@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A + B ou A × B?</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        h1 { text-align: center; }
+        .container { 
+            background: rgba(255,255,255,0.1); 
+            padding: 30px; 
+            border-radius: 15px; 
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .resultado { 
+            background: rgba(0,255,0,0.3); 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧮 Calculadora Inteligente</h1>
+        <p>Digite A e B. Se forem <strong>iguais</strong> → SOMA<br>
+        Se forem <strong>diferentes</strong> → MULTIPLICAÇÃO</p>
+    </div>
+    
+    <script>
+        // 1. Ler os dois valores
+        let A = prompt("Digite o valor de A:");
+        let B = prompt("Digite o valor de B:");
+        
+        // 2. Converter para números inteiros
+        A = parseInt(A);
+        B = parseInt(B);
+
+        // 3. Verificar se são iguais → SOMAR ou MULTIPLICAR
+        let C;
+        if (A === B) {
+            C = A + B;
+            alert(`✅ A(${A}) e B(${B}) são IGUAIS!\nSOMA = ${C}`);
+        } else {
+            C = A * B;
+            alert(`➖ A(${A}) e B(${B}) são DIFERENTES!\nMULTIPLICAÇÃO = ${C}`);
+        }
+
+        // 4. Mostrar resultado final na página
+        document.write(`
+            <div class="container">
+                <div class="resultado">
+                    <h2>🎯 RESULTADO FINAL</h2>
+                    <p><strong>A:</strong> ${A}</p>
+                    <p><strong>B:</strong> ${B}</p>
+                    <hr>
+                    <p><strong>C = ${C}</strong></p>
+                    <p style="font-size: 14px; opacity: 0.8;">
+                        ${A === B ? 'SOMA (A + B)' : 'MULTIPLICAÇÃO (A × B)'}
+                    </p>
+                </div>
+            </div>
+        `);
+    </script>
+</body>
+</html>

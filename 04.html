@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Antecessor e Sucessor</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial; 
+            padding: 20px; 
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-align: center;
+        }
+        .container { 
+            background: rgba(255,255,255,0.15); 
+            padding: 40px; 
+            border-radius: 20px; 
+            max-width: 400px;
+            margin: 50px auto;
+            backdrop-filter: blur(10px);
+        }
+        .numero { font-size: 48px; color: #ffd93d; margin: 20px 0; }
+        .antecessor { color: #ff8e8e; font-size: 24px; }
+        .sucessor { color: #a8e6cf; font-size: 24px; }
+        button { 
+            background: #fff; 
+            border: none; 
+            padding: 12px 24px; 
+            border-radius: 25px; 
+            font-size: 16px; 
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔢 Antecessor & Sucessor</h1>
+        <p>Digite um número e veja seu antecessor e sucessor!</p>
+        
+        <button onclick="calcular()">CALCULAR ➡️</button>
+    </div>
+
+    <script>
+        function calcular() {
+            // 1. Ler o número
+            let numero = parseInt(prompt("Digite um número inteiro:"));
+
+            // 2. Calcular ANTECESSOR (-1) e SUCESSOR (+1)
+            let antecessor = numero - 1;
+            let sucessor = numero + 1;
+
+            // 3. Mostrar resultado
+            alert(`🎯 Número: ${numero}\n` +
+                  `⬅️  Antecessor: ${antecessor}\n` +
+                  `➡️  Sucessor: ${sucessor}`);
+
+            // 4. Mostrar na página
+            document.write(`
+                <div class="container">
+                    <div class="numero">${numero}</div>
+                    <div class="antecessor">⬅️ ANTECESSOR: ${antecessor}</div>
+                    <div class="sucessor">➡️ SUCESSOR: ${sucessor}</div>
+                    <br>
+                    <button onclick="location.reload()">🔄 Novo Cálculo</button>
+                </div>
+            `);
+        }
+    </script>
+</body>
+</html>

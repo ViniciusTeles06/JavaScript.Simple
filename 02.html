@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Par/Ímpar + Positivo/Negativo</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        h1 { color: #333; }
+        .resultado { 
+            background: #f0f0f0; 
+            padding: 15px; 
+            border-radius: 10px; 
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Analisador de Números</h1>
+    
+    <script>
+        // 1. Ler o número
+        let numero = prompt("Digite um número qualquer:");
+        numero = Number(numero);
+
+        // 2. Verificar PAR/ÍMPar (resto da divisão por 2)
+        let parImpar;
+        if (numero % 2 === 0) {
+            parImpar = "PAR";
+        } else {
+            parImpar = "ÍMPAR";
+        }
+
+        // 3. Verificar POSITIVO/NEGATIVO
+        let sinal;
+        if (numero > 0) {
+            sinal = "POSITIVO";
+        } else if (numero < 0) {
+            sinal = "NEGATIVO";
+        } else {
+            sinal = "ZERO";
+        }
+
+        // 4. Mostrar resultado
+        alert("📊 ANÁLISE DO NÚMERO " + numero + "\n\n" +
+              "• " + parImpar + "\n" +
+              "• " + sinal);
+
+        // 5. Mostrar na página também
+        document.write(`
+            <div class="resultado">
+                <h2>Resultado:</h2>
+                <p><strong>Número:</strong> ${numero}</p>
+                <p><strong>É:</strong> ${parImpar}</p>
+                <p><strong>Sinal:</strong> ${sinal}</p>
+            </div>
+        `);
+    </script>
+</body>
+</html>

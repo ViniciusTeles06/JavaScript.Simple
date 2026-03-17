@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analisador de Booleanos</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .container { 
+            background: rgba(255,255,255,0.1); 
+            padding: 40px; 
+            border-radius: 20px; 
+            max-width: 500px;
+            margin: 50px auto;
+            backdrop-filter: blur(10px);
+        }
+        .verdadeiro { 
+            background: #4CAF50; 
+            color: white; 
+            padding: 15px 25px; 
+            border-radius: 25px; 
+            display: inline-block;
+            margin: 10px;
+            font-weight: bold;
+        }
+        .falso { 
+            background: #f44336; 
+            color: white; 
+            padding: 15px 25px; 
+            border-radius: 25px; 
+            display: inline-block;
+            margin: 10px;
+            font-weight: bold;
+        }
+        .resultado { 
+            background: rgba(255,255,255,0.2); 
+            padding: 30px; 
+            border-radius: 15px; 
+            margin-top: 30px;
+            font-size: 22px;
+        }
+        select { 
+            padding: 12px; 
+            font-size: 18px; 
+            border-radius: 10px; 
+            border: none;
+            margin: 10px;
+            width: 200px;
+        }
+        button { 
+            background: #ff6b6b; 
+            color: white; 
+            border: none; 
+            padding: 15px 30px; 
+            border-radius: 25px; 
+            font-size: 18px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Analisador Lógico</h1>
+        <p>Escolha os valores booleanos (VERDADEIRO ou FALSO):</p>
+        
+        <br>
+        <select id="booleano1">
+            <option value="">Valor A:</option>
+            <option value="true">✅ VERDADEIRO</option>
+            <option value="false">❌ FALSO</option>
+        </select>
+        
+        <select id="booleano2">
+            <option value="">Valor B:</option>
+            <option value="true">✅ VERDADEIRO</option>
+            <option value="false">❌ FALSO</option>
+        </select>
+        
+        <br><br>
+        <button onclick="analisar()">ANALISAR ➡️</button>
+        
+        <div id="resultado" class="resultado" style="display:none;"></div>
+    </div>
+
+    <script>
+        function analisar() {
+            // 1. Ler os dois valores booleanos
+            let A = document.getElementById('booleano1').value === 'true';
+            let B = document.getElementById('booleano2').value === 'true';
+
+            // 2. Validar se selecionou
+            if (!document.getElementById('booleano1').value || !document.getElementById('booleano2').value) {
+                alert("❌ Selecione os dois valores!");
+                return;
+            }
+
+            // 3. Determinar resultado
+            let resultadoTexto;
+            let classeResultado;
+
+            if (A && B) {
+                resultadoTexto = "✅ AMBOS SÃO VERDADEIRO!";
+                classeResultado = "verdadeiro";
+            } else {
+                resultadoTexto = "❌ NÃO SÃO AMBOS VERDADEIRO!";
+                classeResultado = "falso";
+            }
+
+            // 4. Mostrar na tela
+            let resultado = document.getElementById('resultado');
+            resultado.innerHTML = `
+                <div class="${classeResultado}">
+                    <h2>Valor A: ${A ? '✅ VERDADEIRO' : '❌ FALSO'}</h2>
+                    <h2>Valor B: ${B ? '✅ VERDADEIRO' : '❌ FALSO'}</h2>
+                    <hr>
+                    <h3>${resultadoTexto}</h3>
+                </div>
+            `;
+            resultado.style.display = 'block';
+
+            // 5. Console para desenvolvedores
+            console.log(`A: ${A}, B: ${B}, Ambos verdadeiros? ${A && B}`);
+        }
+    </script>
+</body>
+</html>

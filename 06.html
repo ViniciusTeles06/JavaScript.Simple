@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reajuste de 5%</title>
+    <style>
+        body { 
+            font-family: 'Arial Black', Arial; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #333;
+            text-align: center;
+        }
+        .container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 25px; 
+            max-width: 500px;
+            margin: 50px auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .reajuste { 
+            background: linear-gradient(45deg, #4CAF50, #8BC34A); 
+            color: white; 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin: 20px 0;
+            font-size: 22px;
+        }
+        .antes { color: #f44336; font-size: 28px; }
+        .depois { color: #4CAF50; font-size: 28px; }
+        input { 
+            padding: 15px; 
+            font-size: 20px; 
+            border: 2px solid #ddd; 
+            border-radius: 12px; 
+            width: 250px;
+            margin: 15px;
+            text-align: center;
+        }
+        button { 
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52); 
+            color: white; 
+            border: none; 
+            padding: 15px 35px; 
+            border-radius: 30px; 
+            font-size: 20px; 
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { transform: scale(1.05); }
+        .percentual { font-size: 24px; color: #2196F3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💰 Calculadora de Reajuste</h1>
+        <h2>+5% de Aumento!</h2>
+        
+        <div class="reajuste">
+            ✨ <strong>REAJUSTE DE 5%</strong> ✨
+        </div>
+        
+        <input type="number" id="valor" placeholder="Digite o valor atual" step="0.01">
+        <br>
+        <button onclick="calcular()">APLICAR REAJUSTE ➡️</button>
+        
+        <div id="resultado" style="display:none; margin-top: 30px;"></div>
+    </div>
+
+    <script>
+        const PERCENTUAL = 0.05; // 5% = 0.05
+
+        function calcular() {
+            // 1. Ler valor atual
+            let valorAtual = parseFloat(document.getElementById('valor').value);
+
+            // 2. Validar entrada
+            if (isNaN(valorAtual) || valorAtual <= 0) {
+                alert("❌ Digite um valor válido!");
+                return;
+            }
+
+            // 3. Calcular novo valor com 5% de aumento
+            let valorReajustado = valorAtual * (1 + PERCENTUAL);
+            let aumento = valorReajustado - valorAtual;
+
+            // 4. Mostrar resultado
+            let resultado = document.getElementById('resultado');
+            resultado.innerHTML = `
+                <div style="background: #e8f5e8; padding: 25px; border-radius: 15px;">
+                    <div class="antes">💵 ANTES: R$ ${valorAtual.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>
+                    <div style="font-size: 36px; margin: 15px 0; color: #4CAF50;">➕</div>
+                    <div class="percentual">+ ${PERCENTUAL * 100}%</div>
+                    <div class="depois">💰 DEPOIS: R$ ${valorReajustado.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</div>
+                    <hr>
+                    <div style="color: #666; font-size: 18px;">
+                        📈 Aumento: R$ ${aumento.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+                    </div>
+                </div>
+            `;
+            resultado.style.display = 'block';
+
+            // 5. Alert resumido
+            alert(`✅ Novo valor com 5% de reajuste:\n` +
+                  `R$ ${valorAtual.toFixed(2)} → R$ ${valorReajustado.toFixed(2)}`);
+        }
+    </script>
+</body>
+</html>

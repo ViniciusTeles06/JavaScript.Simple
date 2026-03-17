@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercício Soma A+B</title>
+</head>
+<body>
+    <h1>Calculadora de Soma</h1>
+    
+    <script>
+        // Seu código JavaScript aqui
+        let A = prompt("Digite o valor de A:");
+        let B = prompt("Digite o valor de B:");
+        let C = prompt("Digite o valor de C:");
+
+        A = Number(A);
+        B = Number(B);
+        C = Number(C);
+
+        let soma = A + B;
+
+        alert("A soma entre A e B é: " + soma);
+
+        if (soma < C) {
+            alert("✅ A soma (" + soma + ") é MENOR que C (" + C + ")");
+        } else {
+            alert("❌ A soma (" + soma + ") NÃO é menor que C (" + C + ")");
+        }
+    </script>
+</body>
+</html>
